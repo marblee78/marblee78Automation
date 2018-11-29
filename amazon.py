@@ -110,6 +110,46 @@ class PythonOrgSearchChrome(unittest.TestCase):
         # verify page title equals 'Amazon.com: brown sneakers men'
 
         self.assertEqual(driver.title, 'Amazon.com: brown sneakers men')
+        
+        # click on first item on page
+
+        driver.find_element_by_id("pdagDesktopSparkleAsinContainer1").click()
+        
+        # wait 5 seconds
+
+        time.sleep(5)
+        
+        #click on size dropdown menu
+
+        driver.find_element_by_id("dropdown_selected_size_name").click()
+        
+        # wait 5 seconds
+
+        time.sleep(5)
+        
+        # select 3rd size from top of menu
+
+        driver.find_element_by_id("native_dropdown_selected_size_name_3").click()
+        
+        # wait 5 seconds
+
+        time.sleep(5)
+        
+        # click "add to cart" button
+
+        driver.find_element_by_id("add-to-cart-button").click()
+        
+        # wait 5 seconds
+
+        time.sleep(5)
+        
+        # click on "proceed to checkout" button **FAILS**
+
+        driver.find_element_by_name("proceedToCheckout").click()
+        
+        # wait 5 seconds
+
+        time.sleep(5)
 
         # Take a screenshot of the results
 
