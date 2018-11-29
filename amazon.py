@@ -143,9 +143,17 @@ class PythonOrgSearchChrome(unittest.TestCase):
 
         time.sleep(5)
         
-        # click on "proceed to checkout" button **FAILS**
+        # verify page title is "Amazon.com Shopping Cart"
+        
+        self.assertEqual(driver.title,"Amazon.com Shopping Cart")
+        
+        # wait 5 seconds
 
-        driver.find_element_by_name("proceedToCheckout").click()
+        time.sleep(5)
+        
+        # click on "proceed to checkout" button
+
+        driver.find_element_by_id("hlb-ptc-btn-native").click()
         
         # wait 5 seconds
 
