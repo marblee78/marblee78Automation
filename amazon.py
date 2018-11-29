@@ -110,52 +110,48 @@ class PythonOrgSearchChrome(unittest.TestCase):
         # verify page title equals 'Amazon.com: brown sneakers men'
 
         self.assertEqual(driver.title, 'Amazon.com: brown sneakers men')
-        
-        # click on first item on page
 
         driver.find_element_by_id("pdagDesktopSparkleAsinContainer1").click()
-        
-        # wait 5 seconds
 
         time.sleep(5)
-        
-        #click on size dropdown menu
 
         driver.find_element_by_id("dropdown_selected_size_name").click()
-        
-        # wait 5 seconds
 
         time.sleep(5)
-        
-        # select 3rd size from top of menu
 
         driver.find_element_by_id("native_dropdown_selected_size_name_3").click()
-        
-        # wait 5 seconds
 
         time.sleep(5)
-        
-        # click "add to cart" button
 
         driver.find_element_by_id("add-to-cart-button").click()
-        
-        # wait 5 seconds
 
         time.sleep(5)
-        
-        # verify page title is "Amazon.com Shopping Cart"
-        
+
         self.assertEqual(driver.title,"Amazon.com Shopping Cart")
-        
-        # wait 5 seconds
 
         time.sleep(5)
-        
-        # click on "proceed to checkout" button
 
         driver.find_element_by_id("hlb-ptc-btn-native").click()
-        
-        # wait 5 seconds
+
+        time.sleep(5)
+
+        email_box = driver.find_element_by_name('email')
+
+        email_box.send_keys('marblee78@hotmail.com')
+
+        time.sleep(5)
+
+        pass_box = driver.find_element_by_name("password")
+
+        pass_box.send_keys('marblee78')
+
+        time.sleep(5)
+
+        driver.find_element_by_id("signInSubmit").click()
+
+        time.sleep(5)
+
+        driver.find_element_by_id("auth-error-message-box")
 
         time.sleep(5)
 
