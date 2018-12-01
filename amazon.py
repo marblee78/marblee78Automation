@@ -57,13 +57,13 @@ class PythonOrgSearchChrome(unittest.TestCase):
 
         driver.get('http://www.amazon.com')
 
-        # A test to ensure the page has keyword Google in the page title
+        # A test to ensure the page has keyword Amazon in the page title
 
         self.assertIn("Amazon", driver.title)
 
         # Pauses the screen for 5 seconds so we have time to confirm it arrived at the right page
 
-        time.sleep(5)
+        #time.sleep(5)
 
         # Find and select the search box element on the page
 
@@ -105,7 +105,7 @@ class PythonOrgSearchChrome(unittest.TestCase):
 
         # Another pause so we can see what's going on
 
-        time.sleep(5)
+        time.sleep(1)
 
         # verify page title equals 'Amazon.com: brown sneakers men'
 
@@ -113,47 +113,37 @@ class PythonOrgSearchChrome(unittest.TestCase):
 
         driver.find_element_by_id("pdagDesktopSparkleAsinContainer1").click()
 
-        time.sleep(5)
+        time.sleep(3)
 
         driver.find_element_by_id("dropdown_selected_size_name").click()
 
-        time.sleep(5)
-
         driver.find_element_by_id("native_dropdown_selected_size_name_3").click()
 
-        time.sleep(5)
+        time.sleep(1)
 
         driver.find_element_by_id("add-to-cart-button").click()
 
-        time.sleep(5)
+        time.sleep(2)
 
         self.assertEqual(driver.title,"Amazon.com Shopping Cart")
 
-        time.sleep(5)
-
         driver.find_element_by_id("hlb-ptc-btn-native").click()
 
-        time.sleep(5)
+        time.sleep(1)
 
         email_box = driver.find_element_by_name('email')
 
-        email_box.send_keys('marblee78@hotmail.com')
-
-        time.sleep(5)
+        email_box.send_keys('marblee78')
 
         pass_box = driver.find_element_by_name("password")
 
-        pass_box.send_keys('marblee78')
-
-        time.sleep(5)
+        pass_box.send_keys('marion')
 
         driver.find_element_by_id("signInSubmit").click()
 
-        time.sleep(5)
+        time.sleep(1)
 
         driver.find_element_by_id("auth-error-message-box")
-
-        time.sleep(5)
 
         # Take a screenshot of the results
 
