@@ -18,6 +18,10 @@ from selenium.webdriver.common.keys import Keys
 
 from selenium.webdriver.chrome.options import Options
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 # --------------------------------------
 
@@ -113,21 +117,35 @@ class PythonOrgSearchChrome(unittest.TestCase):
 
         driver.find_element_by_id("pdagDesktopSparkleAsinContainer1").click()
 
-        time.sleep(3)
+        #time.sleep(3)
 
-        driver.find_element_by_id("dropdown_selected_size_name").click()
+        try:
+            element = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.ID, "dropdown_selected_size_name"))
+            )
+        finally:
+            driver.find_element_by_id("dropdown_selected_size_name").click()
 
-        driver.find_element_by_id("native_dropdown_selected_size_name_3").click()
-
-        time.sleep(1)
-
-        driver.find_element_by_id("add-to-cart-button").click()
+        try:
+            element = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.ID, "native_dropdown_selected_size_name_3"))
+            )
+        finally:
+            driver.find_element_by_id("native_dropdown_selected_size_name_3").click()
 
         time.sleep(2)
 
-        self.assertEqual(driver.title,"Amazon.com Shopping Cart")
+        driver.find_element_by_id("add-to-cart-button").click()
 
-        driver.find_element_by_id("hlb-ptc-btn-native").click()
+        try:
+            element = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.ID, "hlb-ptc-btn-native"))
+            )
+        finally:
+            driver.find_element_by_id("hlb-ptc-btn-native").click()
+        #time.sleep(3)
+
+        #self.assertEqual(driver.title, "Amazon.com Shopping Cart")
 
         time.sleep(1)
 
@@ -143,7 +161,7 @@ class PythonOrgSearchChrome(unittest.TestCase):
 
         time.sleep(1)
 
-        driver.find_element_by_id("auth-error-message-box")
+        driver.find_element_by_id("auth-warning-message-box")
 
         # Take a screenshot of the results
 
