@@ -133,9 +133,16 @@ class PythonOrgSearchChrome(unittest.TestCase):
         finally:
             driver.find_element_by_id("native_dropdown_selected_size_name_3").click()
 
-        time.sleep(2)
+        try:
+            element = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.ID, "price_inside_buybox"))
+            )
+        finally:
+            driver.find_element_by_id("add-to-cart-button").click()
 
-        driver.find_element_by_id("add-to-cart-button").click()
+        #time.sleep(2)
+
+        #driver.find_element_by_id("add-to-cart-button").click()
 
         try:
             element = WebDriverWait(driver, 10).until(
